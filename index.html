@@ -2,521 +2,414 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Вакансии в Бельгии — Telegram канал</title>
-<meta name="description" content="Реальные строительные вакансии в Бельгии. Бетонщик, Электрик, Сантехник, Плиточник и другие. Официально. Командировка А1.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Вакансии в Бельгии — Telegram</title>
+<meta name="description" content="Реальные строительные вакансии в Бельгии. Подпишись на Telegram-канал.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --tg: #229ED9;
-    --tg-dark: #1a7aab;
-    --tg-light: #EBF6FD;
-    --yellow: #D4930A;
-    --yellow-bg: #FEF9EC;
-    --bg: #F5F7FA;
-    --bg2: #FFFFFF;
-    --bg3: #EDF2F7;
-    --border: rgba(0,0,0,0.08);
-    --border2: rgba(34,158,217,0.2);
-    --text: #0F1923;
-    --text2: #4A5568;
-    --text3: #9AA5B4;
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+  html,body{
+    height:100%;
+    background:#0D1117;
+    color:#fff;
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Manrope', sans-serif;
+  /* FULL SCREEN HERO — всё видно без скролла */
+  .hero{
     min-height: 100vh;
-    overflow-x: hidden;
+    min-height: 100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:24px 20px 32px;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
   }
 
-  /* TOP ACCENT BAR */
-  .top-bar {
-    height: 4px;
-    background: linear-gradient(90deg, var(--tg), #1a7aab, #229ED9);
-    width: 100%;
+  /* фоновые круги */
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-120px;left:50%;
+    transform:translateX(-50%);
+    width:500px;height:500px;
+    background:radial-gradient(circle,rgba(34,158,217,.15) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    bottom:-80px;right:-80px;
+    width:300px;height:300px;
+    background:radial-gradient(circle,rgba(234,179,8,.08) 0%,transparent 65%);
+    pointer-events:none;
   }
 
-  /* SUBTLE PATTERN */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(circle at 1px 1px, rgba(34,158,217,0.06) 1px, transparent 0);
-    background-size: 28px 28px;
-    pointer-events: none;
-    z-index: 0;
+  .content{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
   }
 
-  /* GLOW */
-  .glow-top {
-    position: fixed;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 700px;
-    height: 350px;
-    background: radial-gradient(ellipse, rgba(34,158,217,0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+  /* ФЛАГ + ЛЕЙБЛ */
+  .top-label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,.06);
+    border:.5px solid rgba(255,255,255,.1);
+    border-radius:100px;
+    padding:6px 14px;
+    margin-bottom:22px;
+  }
+  .top-label span{font-size:18px}
+  .top-label-text{
+    font-size:11px;
+    color:rgba(255,255,255,.5);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:600;
   }
 
-  .container {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
+  /* TG ИКОНКА */
+  .tg-icon{
+    width:64px;height:64px;
+    background:linear-gradient(135deg,#229ED9,#1a7aab);
+    border-radius:18px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;
+    margin-bottom:18px;
+    box-shadow:0 0 40px rgba(34,158,217,.4);
   }
 
-  /* HEADER */
-  header {
-    padding: 36px 0 0;
-    text-align: center;
-    animation: fadeUp 0.6s ease both;
+  /* ЗАГОЛОВОК */
+  h1{
+    font-size:clamp(28px,8vw,42px);
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:10px;
+    letter-spacing:-.02em;
+  }
+  h1 span{color:#229ED9}
+
+  /* ПОДЗАГОЛОВОК */
+  .sub{
+    font-size:14px;
+    color:rgba(255,255,255,.5);
+    line-height:1.6;
+    margin-bottom:24px;
+    max-width:320px;
+  }
+  .sub strong{color:#EAB308;font-weight:700}
+
+  /* КНОПКА — самый главный элемент */
+  .cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    background:#229ED9;
+    color:#fff;
+    font-size:17px;
+    font-weight:800;
+    padding:20px 24px;
+    border-radius:16px;
+    text-decoration:none;
+    letter-spacing:-.01em;
+    box-shadow:0 8px 32px rgba(34,158,217,.5);
+    transition:transform .15s,box-shadow .15s,background .15s;
+    margin-bottom:12px;
+  }
+  .cta:active{
+    transform:scale(.97);
+    box-shadow:0 4px 16px rgba(34,158,217,.4);
+  }
+  .cta-arrow{
+    font-size:20px;
+    animation:bounce 1.5s infinite;
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(4px)}
   }
 
-  .flag-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .flag { font-size: 20px; }
-  .flag-divider {
-    width: 1px;
-    height: 14px;
-    background: var(--border);
-  }
-  .country-label {
-    font-size: 11px;
-    color: var(--text3);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
+  .cta-note{
+    font-size:12px;
+    color:rgba(255,255,255,.3);
+    margin-bottom:28px;
   }
 
-  .channel-logo {
-    width: 72px;
-    height: 72px;
-    background: linear-gradient(135deg, var(--tg), var(--tg-dark));
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
-    font-size: 32px;
-    box-shadow: 0 8px 32px rgba(34,158,217,0.25), 0 2px 8px rgba(34,158,217,0.15);
+  /* РАЗДЕЛИТЕЛЬ */
+  .divider{
+    width:100%;
+    height:.5px;
+    background:rgba(255,255,255,.08);
+    margin-bottom:22px;
   }
 
-  .channel-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    color: var(--tg);
-    letter-spacing: 0.15em;
-    margin-bottom: 20px;
+  /* ПРОФЕССИИ */
+  .profs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    justify-content:center;
+    margin-bottom:20px;
+  }
+  .prof{
+    background:rgba(34,158,217,.1);
+    border:.5px solid rgba(34,158,217,.2);
+    color:#229ED9;
+    font-size:12px;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:100px;
   }
 
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 10vw, 58px);
-    line-height: 1.0;
-    color: var(--text);
-    margin-bottom: 12px;
-    letter-spacing: 0.02em;
+  /* ПИЛЛЫ УСЛОВИЙ */
+  .conditions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    justify-content:center;
+    margin-bottom:24px;
   }
-  h1 span { color: var(--tg); }
+  .cond{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:11px;
+    color:rgba(255,255,255,.45);
+    background:rgba(255,255,255,.04);
+    border:.5px solid rgba(255,255,255,.08);
+    padding:5px 11px;
+    border-radius:100px;
+  }
+  .cond-icon{font-size:13px}
 
-  .subtitle {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.65;
-    margin-bottom: 28px;
+  /* ФИЛЬТР */
+  .filter{
+    background:rgba(234,179,8,.07);
+    border:.5px solid rgba(234,179,8,.2);
+    border-radius:12px;
+    padding:11px 14px;
+    font-size:12px;
+    color:rgba(255,255,255,.5);
+    line-height:1.55;
+    text-align:center;
   }
-  .subtitle strong {
-    color: var(--yellow);
-    font-weight: 700;
-  }
+  .filter strong{color:#EAB308;font-weight:700}
 
-  /* PROFESSIONS */
-  .professions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    justify-content: center;
-    margin-bottom: 28px;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  .prof-tag {
-    background: var(--tg-light);
-    border: 1px solid rgba(34,158,217,0.2);
-    color: var(--tg-dark);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 100px;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  }
-  .prof-tag:hover {
-    background: rgba(34,158,217,0.15);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(34,158,217,0.15);
-  }
-
-  /* FEATURES */
-  .features {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-    animation: fadeUp 0.6s 0.15s ease both;
-  }
-  .feature {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 13px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: box-shadow 0.2s, transform 0.2s;
-  }
-  .feature:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    transform: translateY(-1px);
-  }
-  .feature-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    flex-shrink: 0;
-  }
-  .feature-text {
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.45;
-  }
-  .feature-text strong {
-    color: var(--text);
-    font-weight: 700;
+  /* ВТОРАЯ КНОПКА внизу после скролла */
+  .below{
+    padding:0 20px 48px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    max-width:420px;
+    margin:0 auto;
+    position:relative;
+    z-index:1;
   }
 
-  /* FILTER BOX */
-  .filter-box {
-    background: var(--yellow-bg);
-    border: 1px solid rgba(212,147,10,0.2);
-    border-radius: 12px;
-    padding: 13px 16px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    animation: fadeUp 0.6s 0.2s ease both;
+  .jobs{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
   }
-  .filter-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .filter-text {
-    font-size: 13px;
-    color: #7A5500;
-    line-height: 1.5;
+  .job-label{
+    font-size:10px;
+    color:rgba(255,255,255,.25);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-bottom:4px;
   }
-  .filter-text strong { color: var(--yellow); font-weight: 700; }
+  .live-dot{
+    width:6px;height:6px;
+    border-radius:50%;
+    background:#4ADE80;
+    animation:pulse 1.5s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-  /* CTA */
-  .cta-wrap {
-    animation: fadeUp 0.6s 0.25s ease both;
-    margin-bottom: 14px;
+  .job{
+    background:rgba(255,255,255,.04);
+    border:.5px solid rgba(255,255,255,.07);
+    border-radius:12px;
+    padding:12px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
   }
-  .cta-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    background: var(--tg);
-    color: #fff;
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 18px 24px;
-    border-radius: 14px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 6px 24px rgba(34,158,217,0.35);
+  .job-left{display:flex;align-items:center;gap:10px}
+  .job-ico{
+    width:36px;height:36px;
+    border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;flex-shrink:0;
   }
-  .cta-btn:hover {
-    background: var(--tg-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 36px rgba(34,158,217,0.4);
-  }
-  .cta-btn:active { transform: translateY(0); }
-  .cta-arrow {
-    font-size: 20px;
-    transition: transform 0.2s;
-  }
-  .cta-btn:hover .cta-arrow { transform: translateY(3px); }
-
-  .cta-sub {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text3);
-    margin-top: 10px;
-    animation: fadeUp 0.6s 0.3s ease both;
+  .job-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px}
+  .job-meta{font-size:11px;color:rgba(255,255,255,.3)}
+  .job-new{
+    background:rgba(74,222,128,.12);
+    color:#4ADE80;
+    font-size:10px;font-weight:700;
+    padding:3px 8px;border-radius:100px;
+    white-space:nowrap;flex-shrink:0;
   }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 28px 0;
+  .cta2{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    background:#229ED9;
+    color:#fff;
+    font-size:15px;font-weight:800;
+    padding:18px 24px;
+    border-radius:16px;
+    text-decoration:none;
+    box-shadow:0 6px 24px rgba(34,158,217,.4);
+    transition:transform .15s;
   }
+  .cta2:active{transform:scale(.97)}
 
-  /* JOBS */
-  .section-label {
-    font-size: 10px;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .footer-note{
+    font-size:11px;
+    color:rgba(255,255,255,.2);
+    text-align:center;
+    line-height:1.6;
+    padding-bottom:8px;
   }
-  .live-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #22C55E;
-    animation: pulse 1.5s infinite;
-  }
-  @keyframes pulse {
-    0%,100%{opacity:1}
-    50%{opacity:0.3}
-  }
-
-  .jobs {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s 0.35s ease both;
-  }
-  .job {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 13px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  }
-  .job:hover {
-    border-color: rgba(34,158,217,0.3);
-    box-shadow: 0 4px 16px rgba(34,158,217,0.1);
-    transform: translateY(-1px);
-  }
-  .job-left {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-  }
-  .job-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .job-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-  .job-meta {
-    font-size: 11px;
-    color: var(--text3);
-  }
-  .job-badge {
-    background: #DCFCE7;
-    color: #166534;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 100px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 24px 0 40px;
-    text-align: center;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-  .footer-text {
-    font-size: 12px;
-    color: var(--text3);
-    line-height: 1.7;
-  }
-  .footer-tg {
-    color: var(--tg);
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 420px) {
-    header { padding-top: 24px; }
-    h1 { font-size: 38px; }
-  }
+  .footer-note a{color:#229ED9;text-decoration:none;font-weight:700}
 </style>
 </head>
 <body>
 
-<div class="top-bar"></div>
-<div class="glow-top"></div>
+<!-- HERO — всё что нужно без скролла -->
+<section class="hero">
+  <div class="content">
 
-<div class="container">
-
-  <header>
-    <div class="flag-row">
-      <span class="flag">🇧🇾</span>
-      <div class="flag-divider"></div>
-      <span class="flag">🇺🇦</span>
-      <div class="flag-divider"></div>
-      <span class="country-label">Работа в Бельгии</span>
-      <div class="flag-divider"></div>
-      <span class="flag">🇧🇪</span>
+    <div class="top-label">
+      <span>🇧🇪</span>
+      <div class="top-label-text">Работа в Бельгии</div>
+      <span>👷</span>
     </div>
 
-    <div class="channel-logo">✈️</div>
-    <div class="channel-name">@belgia_job</div>
+    <div class="tg-icon">✈️</div>
 
     <h1>Реальные<br>вакансии<br>в <span>Бельгии</span></h1>
 
-    <p class="subtitle">
+    <p class="sub">
       Узнай ставки <strong>до того как поедешь.</strong><br>
-      Каждую неделю — свежие позиции от проверенных работодателей.
+      Свежие позиции каждую неделю.
     </p>
-  </header>
 
-  <div class="professions">
-    <span class="prof-tag">Бетонщик</span>
-    <span class="prof-tag">Плиточник</span>
-    <span class="prof-tag">Электрик</span>
-    <span class="prof-tag">Сантехник</span>
-    <span class="prof-tag">Водитель C+E</span>
-    <span class="prof-tag">Кровельщик</span>
-    <span class="prof-tag">Каменщик</span>
-  </div>
-
-  <div class="features">
-    <div class="feature">
-      <div class="feature-icon" style="background:#DCFCE7">✅</div>
-      <div class="feature-text"><strong>Только официальные работодатели</strong> — без серых схем и обмана</div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon" style="background:#EBF6FD">📄</div>
-      <div class="feature-text"><strong>Официальная командировка А1</strong> — всё легально и прозрачно</div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon" style="background:#FEF9EC">📅</div>
-      <div class="feature-text"><strong>Свежие вакансии каждую неделю</strong> — не пропусти лучшие позиции</div>
-    </div>
-  </div>
-
-  <div class="filter-box">
-    <div class="filter-icon">📋</div>
-    <div class="filter-text">
-      Канал для тех у кого есть <strong>польская виза или карта побыту.</strong> Если документы в порядке — добро пожаловать.
-    </div>
-  </div>
-
-  <div class="cta-wrap">
-    <a href="https://t.me/belgia_job" class="cta-btn" target="_blank" rel="noopener">
+    <!-- ГЛАВНАЯ КНОПКА -->
+    <a href="https://t.me/belgia_job" class="cta" target="_blank" rel="noopener">
       <span>Подписаться на канал</span>
       <span class="cta-arrow">↓</span>
     </a>
-  </div>
-  <p class="cta-sub">Подписка бесплатно · Telegram</p>
+    <div class="cta-note">Бесплатно · Telegram · @belgia_job</div>
 
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <div class="section-label">
-    <div class="live-dot"></div>
-    Примеры вакансий из канала
+    <!-- ПРОФЕССИИ -->
+    <div class="profs">
+      <span class="prof">Бетонщик</span>
+      <span class="prof">Плиточник</span>
+      <span class="prof">Электрик</span>
+      <span class="prof">Сантехник</span>
+      <span class="prof">Водитель C+E</span>
+      <span class="prof">Кровельщик</span>
+      <span class="prof">Каменщик</span>
+    </div>
+
+    <!-- УСЛОВИЯ -->
+    <div class="conditions">
+      <div class="cond"><span class="cond-icon">✅</span>Официально</div>
+      <div class="cond"><span class="cond-icon">📄</span>Командировка А1</div>
+      <div class="cond"><span class="cond-icon">🔍</span>Проверенные работодатели</div>
+    </div>
+
+    <!-- ФИЛЬТР -->
+    <div class="filter">
+      📋 Канал для тех у кого есть <strong>польская виза или карта побыту</strong>
+    </div>
+
   </div>
+</section>
+
+<!-- НИЖЕ — для тех кто скроллит -->
+<section class="below">
 
   <div class="jobs">
+    <div class="job-label">
+      <div class="live-dot"></div>
+      Примеры вакансий из канала
+    </div>
     <div class="job">
       <div class="job-left">
-        <div class="job-icon" style="background:#FEF9EC">⚡</div>
+        <div class="job-ico" style="background:rgba(251,191,36,.12);color:#FBBF24">⚡</div>
         <div>
           <div class="job-title">Бетон / Монолит</div>
           <div class="job-meta">Хасселт · Завод бетонных элементов · А1</div>
         </div>
       </div>
-      <div class="job-badge">new</div>
+      <div class="job-new">new</div>
     </div>
     <div class="job">
       <div class="job-left">
-        <div class="job-icon" style="background:#EBF6FD">🔧</div>
+        <div class="job-ico" style="background:rgba(96,165,250,.12);color:#60A5FA">🔧</div>
         <div>
           <div class="job-title">Сантехник</div>
           <div class="job-meta">Гент · Строительство · А1</div>
         </div>
       </div>
-      <div class="job-badge">new</div>
+      <div class="job-new">new</div>
     </div>
     <div class="job">
       <div class="job-left">
-        <div class="job-icon" style="background:#F0FDF4">🪟</div>
+        <div class="job-ico" style="background:rgba(52,211,153,.12);color:#34D399">🪟</div>
         <div>
           <div class="job-title">Плиточник (внутрянка и фасад)</div>
           <div class="job-meta">Кортрейк · Строительство · А1</div>
         </div>
       </div>
-      <div class="job-badge">new</div>
+      <div class="job-new">new</div>
     </div>
   </div>
 
-  <a href="https://t.me/belgia_job" class="cta-btn" target="_blank" rel="noopener" style="margin-bottom:28px;display:flex">
+  <a href="https://t.me/belgia_job" class="cta2" target="_blank" rel="noopener">
     <span>Открыть Telegram-канал</span>
-    <span class="cta-arrow">↓</span>
+    <span>↓</span>
   </a>
 
-  <div class="divider"></div>
+  <div class="footer-note">
+    Telegram-канал <a href="https://t.me/belgia_job">@belgia_job</a><br>
+    Польская виза или карта побыту · Официально · А1
+  </div>
 
-  <footer>
-    <div class="footer-text">
-      Telegram-канал с вакансиями в Бельгии<br>
-      <a href="https://t.me/belgia_job" class="footer-tg">@belgia_job</a><br><br>
-      Канал для тех у кого польская виза или карта побыту.<br>
-      Все вакансии — официально, командировка А1.
-    </div>
-  </footer>
+</section>
 
-</div>
 </body>
 </html>
